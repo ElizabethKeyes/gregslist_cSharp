@@ -19,6 +19,18 @@ CREATE TABLE IF NOT EXISTS cars(
   color VARCHAR(8) DEFAULT '#FFFFFF'
 ) default charset utf8mb4 COMMENT 'emojis enabled 🦞';
 
+CREATE TABLE IF NOT EXISTS houses(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+  levels TINYINT NOT NULL,
+  bedrooms TINYINT NOT NULL,
+  bathrooms TINYINT NOT NULL,
+  price INT NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  imgUrl VARCHAR(500) NOT NULL
+) default charset utf8mb4 COMMENT 'emojis enabled 🦞';
+
+INSERT INTO houses(levels, bedrooms, bathrooms, price, description, imgUrl)
+values(2, 4, 3, 500000, "It's a bigger house'", "https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80");
 
 INSERT INTO cars(make, model, price, year, hasTires, color)
 values('mazda', 'miata', 5000, 2005, true, DEFAULT) ;
@@ -42,4 +54,4 @@ WHERE id = 4;
 
 DELETE FROM cars WHERE id = 1 ;
 
-DROP TABLE cars;
+DROP TABLE houses;

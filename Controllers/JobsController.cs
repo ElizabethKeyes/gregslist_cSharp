@@ -25,6 +25,34 @@ public class JobsController : ControllerBase
     }
   }
 
+  [HttpDelete("{jobId}")]
+  public ActionResult<string> DeleteJob(int jobId)
+  {
+    try
+    {
+      string message = _jobsService.DeleteJob(jobId);
+      return Ok(message);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpPut("{jobId}")]
+  public ActionResult<Job> EditJob(int jobId, [FromBody] Job jobData)
+  {
+    try
+    {
+      Job job = _jobsService.EditJob(jobId, jobData);
+      return Ok(job);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
   [HttpGet]
   public ActionResult<List<Job>> GetJobs()
   {

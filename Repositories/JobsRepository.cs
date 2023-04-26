@@ -23,6 +23,25 @@ public class JobsRepository
     return id;
   }
 
+  internal int DeleteJob(int jobId)
+  {
+    string sql = "DELETE FROM jobs WHERE id = @jobId LIMIT 1;";
+    int rowsAffected = _db.Execute(sql, new { jobId });
+    return rowsAffected;
+  }
+
+  internal void EditJob(Job ogJob)
+  {
+    string sql = @"
+    UPDATE jobs
+    SET
+    title = @Title,
+    description = @Description,
+    rate = @Rate
+    WHERE id = @Id;";
+    _db.Execute(sql, ogJob);
+  }
+
   internal Job GetJobById(int jobId)
   {
     string sql = "SELECT * FROM jobs WHERE id = @jobId LIMIT 1;";

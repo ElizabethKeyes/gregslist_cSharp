@@ -10,6 +10,16 @@ public class HousesService
     _housesRepo = housesRepo;
   }
 
+  internal House GetHouseById(int houseId)
+  {
+    House house = _housesRepo.GetHouseById(houseId);
+    if (house == null)
+    {
+      throw new Exception($"No house found at id {houseId}");
+    }
+    return house;
+  }
+
   internal List<House> GetHouses()
   {
     List<House> houses = _housesRepo.GetHouses();

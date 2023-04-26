@@ -25,6 +25,20 @@ public class HousesController : ControllerBase
     }
   }
 
+  [HttpDelete("{houseId}")]
+  public ActionResult<string> DeleteHouse(int houseId)
+  {
+    try
+    {
+      string message = _housesService.DeleteHouse(houseId);
+      return message;
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
   [HttpGet]
   public ActionResult<List<House>> GetHouses()
   {

@@ -25,6 +25,13 @@ public class HousesRepository
     return id;
   }
 
+  internal int DeleteHouse(int houseId)
+  {
+    string sql = "DELETE FROM houses WHERE id = @houseId LIMIT 1";
+    int rowsAffected = _db.Execute(sql, new { houseId });
+    return rowsAffected;
+  }
+
   internal House GetHouseById(int houseId)
   {
     string sql = "SELECT * FROM houses WHERE id = @houseId;";

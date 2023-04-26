@@ -54,21 +54,21 @@ public class CarsService
   {
     Car car = this.GetOne(carId);
     int rowsAffected = _carsRepo.Remove(carId);
-
-    // NOTE we don't have to do this!
-
-    if (rowsAffected == 0)
-    {
-      throw new Exception("DELETE FAILED... ????");
-    }
-
-    // NOTE we don't have to do this!
-
-    if (rowsAffected > 1)
-    {
-      throw new Exception("CALL MICK");
-    }
-
     return $"{car.Make + ' ' + car.Model} is toast, bud." + ' ' + "🏎️🔥";
+
+    // NOTE we don't have to do this!
+
+    // if (rowsAffected == 0)
+    // {
+    //   throw new Exception("DELETE FAILED... ????");
+    // }
+
+    // NOTE we don't have to do this!
+
+    // if (rowsAffected > 1)
+    // {
+    //   throw new Exception("CALL MICK");
+    // }
+
   }
 }

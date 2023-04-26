@@ -17,6 +17,13 @@ public class HousesService
     return house;
   }
 
+  internal string DeleteHouse(int houseId)
+  {
+    House house = this.GetHouseById(houseId);
+    int rowsAffected = _housesRepo.DeleteHouse(houseId);
+    return $"{house.Bedrooms} bedroom house has been removed at id {houseId}";
+  }
+
   internal House GetHouseById(int houseId)
   {
     House house = _housesRepo.GetHouseById(houseId);

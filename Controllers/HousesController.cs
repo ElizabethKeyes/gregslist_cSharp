@@ -11,6 +11,20 @@ public class HousesController : ControllerBase
     _housesService = housesService;
   }
 
+  [HttpPost]
+  public ActionResult<House> CreateHouse([FromBody] House houseData)
+  {
+    try
+    {
+      House house = _housesService.CreateHouse(houseData);
+      return Ok(house);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
   [HttpGet]
   public ActionResult<List<House>> GetHouses()
   {
@@ -38,4 +52,6 @@ public class HousesController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+
 }

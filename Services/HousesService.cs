@@ -10,6 +10,13 @@ public class HousesService
     _housesRepo = housesRepo;
   }
 
+  internal House CreateHouse(House houseData)
+  {
+    int id = _housesRepo.CreateHouse(houseData);
+    House house = this.GetHouseById(id);
+    return house;
+  }
+
   internal House GetHouseById(int houseId)
   {
     House house = _housesRepo.GetHouseById(houseId);

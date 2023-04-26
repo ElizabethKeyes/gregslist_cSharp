@@ -31,7 +31,21 @@ public class HousesController : ControllerBase
     try
     {
       string message = _housesService.DeleteHouse(houseId);
-      return message;
+      return Ok(message);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
+
+  [HttpPut("{houseId}")]
+  public ActionResult<House> EditHouse(int houseId, [FromBody] House houseData)
+  {
+    try
+    {
+      House house = _housesService.EditHouse(houseId, houseData);
+      return Ok(house);
     }
     catch (Exception e)
     {

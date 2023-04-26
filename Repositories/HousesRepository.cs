@@ -32,6 +32,21 @@ public class HousesRepository
     return rowsAffected;
   }
 
+  internal void EditHouse(House ogHouse)
+  {
+    string sql = @"
+    UPDATE houses
+    SET
+    bedrooms = @Bedrooms,
+    bathrooms = @Bathrooms,
+    price = @Price,
+    description = @Description
+    WHERE id = @Id
+    ;";
+
+    _db.Execute(sql, ogHouse);
+  }
+
   internal House GetHouseById(int houseId)
   {
     string sql = "SELECT * FROM houses WHERE id = @houseId;";
